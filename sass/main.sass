@@ -1,0 +1,356 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+// ============= RESET ALL MARGINS AND PADDINGS ==============*/
+*
+	margin: 0
+	padding: 0
+	outline: none
+
+// =============DEFAULT VALUES FOR HTML AND BODY =============*/
+html, body
+	height: 100%
+html
+	background-color: #fff
+body
+	overflow-x: hidden
+	opacity: 1
+	min-width: 320px
+
+// =========== DEFAULT STYLES FOR OTHER ELEMENTS ===========*/
+.content-wrap
+	max-width: 90%
+	margin: auto
+	position: relative
+	height: 100%
+.content
+	position: relative
+h1, h2
+	font-family: $NexaLight
+h3
+	font-family: $NexaBold
+h1, h2, h3
+	text-transform: uppercase
+	font-weight: normal
+h1
+	color: $white
+	font-size: 60px
+	margin-top: 50px
+	strong
+		font-family: $NexaBold
+h2
+	font-size: 60px
+	margin-bottom: 50px
+	&.black
+		color: $black
+	&.white
+		color: $white
+h3
+	font-size: 30px
+	letter-spacing: 2px
+section, footer
+	padding-top: 80px
+a 
+	outline: none
+
+/* ========== NAVIGATION ==========*/
+nav
+	display: -webkit-box
+	display: -ms-flexbox
+	display: flex
+	justify-content: center
+
+.cd-auto-hide-header
+	position: fixed
+	z-index: 2
+	top: 0
+	left: 0
+	width: 100%
+	min-height: 92px
+	height: auto
+	-webkit-transform: translateZ(0)
+	transform: translateZ(0)
+	will-change: transform
+	-webkit-transition: -webkit-transform .5s
+	transition: -webkit-transform .5s
+	transition: transform .5s
+	transition: transform .5s, -webkit-transform .5s
+	&.is-hidden
+		-webkit-transform: translateY(-100%)
+		-ms-transform: translateY(-100%)
+		transform: translateY(-100%)
+	.nav-trigger
+		position: absolute
+		z-index: 1001
+		top: 50%
+		bottom: auto
+		-webkit-transform: translateY(-50%)
+		-ms-transform: translateY(-50%)
+		transform: translateY(-50%)
+		display: table
+		height: 60px
+		padding: 0 1em
+		font-size: 1.2rem
+		text-transform: uppercase
+		right: 20px
+		border-radius: 50%
+		+background(radial-gradient(rgba($white, .6), transparent))
+		box-shadow: 0 0 100px rgba($white, .6)
+		span
+			display: table-cell
+			vertical-align: middle
+		em
+			display: block
+			position: relative
+			height: 2px
+			width: 24px
+			background-color: rgba($black, .8)
+			-webkit-backface-visibility: hidden
+			backface-visibility: hidden
+			&::after
+				display: block
+				position: relative
+				height: 2px
+				width: 24px
+				background-color: rgba($black, .8)
+				-webkit-backface-visibility: hidden
+				backface-visibility: hidden
+			&::before
+				display: block
+				position: relative
+				height: 2px
+				width: 24px
+				background-color: rgba($black, .8)
+				-webkit-backface-visibility: hidden
+				backface-visibility: hidden
+				position: absolute
+				content: ''
+				left: 0
+				-webkit-transition: -webkit-transform .2s
+				transition: -webkit-transform .2s
+				transition: transform .2s
+				transition: transform .2s, -webkit-transform .2s
+			-webkit-transition: background-color .2s
+			transition: background-color .2s
+			&::after
+				position: absolute
+				content: ''
+				left: 0
+				-webkit-transition: -webkit-transform .2s
+				transition: -webkit-transform .2s
+				transition: transform .2s
+				transition: transform .2s, -webkit-transform .2s
+			&::before
+				-webkit-transform: translateY(-8px)
+				-ms-transform: translateY(-8px)
+				transform: translateY(-8px)
+			&::after
+				-webkit-transform: translateY(8px)
+				-ms-transform: translateY(8px)
+				transform: translateY(8px)
+	&.nav-open .nav-trigger em
+		background-color: rgba(255, 255, 255, 0)
+		&::before
+			-webkit-transform: rotate(-45deg)
+			-ms-transform: rotate(-45deg)
+			transform: rotate(-45deg)
+		&::after
+			-webkit-transform: rotate(45deg)
+			-ms-transform: rotate(45deg)
+			transform: rotate(45deg)
+
+nav
+	+linear-gradient(to top, transparent, $black)
+	width: 100%
+	ul
+		width: 100%
+		list-style-type: none
+		list-style-position: inside
+		display: -webkit-box
+		display: -ms-flexbox
+		display: flex
+		flex-direction: row
+		justify-content: center
+		li
+			padding: 30px
+			cursor: pointer
+			position: relative
+			&::before
+				content: ''
+				position: absolute
+				height: 100%
+				width: 100%
+				top: 0
+				left: 0
+				transition: transform .4s ease
+				transform: scale(0)
+				+background(linear-gradient($white, transparent) left repeat)
+				transform-origin: top
+			a
+				color: rgba($white, .8)
+				transition: all .4s ease
+				position: relative
+
+			&:hover
+				&::before
+					transform: scale(1)
+				a
+					color: $black
+					z-index: 1000
+			a
+				text-transform: uppercase
+				text-decoration: none
+				font-family: $NexaLight
+				font-size: 24px
+
+// ========== SCROLLING ARROWS ========== */
+.scroll
+	text-align: center
+	span
+		font-family: $NexaBold
+		text-transform: uppercase
+		letter-spacing: 2px
+		font-size: 18px
+	i
+		padding: 10px 0 20px
+		font-size: 60px
+		cursor: pointer
+	a
+		text-decoration: none
+		transition: color .4s ease
+	&.white
+		color: rgba($white, .7)
+		a
+			color: inherit
+			&:hover
+				color: rgba($white, 1)
+	&.black
+		color: rgba($black, .3)
+		a 
+			color: inherit
+			&:hover
+				color: rgba($black, .4)
+
+// ================== HEADER STYLES ==================*/
+header
+	background-image: url(../img/main_bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	min-height: 320px
+	height: 100vh
+	.logo
+		text-align: center
+		position: absolute
+		top: 120px
+		left: 50%
+		transform: translate(-50%)
+		img
+			height: 40vh
+			width: auto
+		a
+			text-decoration: none
+	.scroll
+		position: absolute
+		bottom: -5px
+		left: 50%
+		transform: translate(-50%)
+
+// ================== SECTION "ABOUT ME" STYLES ==================*/			
+.about-me
+	.content
+		display: -webkit-box
+		display: -ms-flexbox
+		display: flex
+		flex-direction: row
+		.my-photo
+			width: 50%
+			img
+				width: 100%
+				height: auto
+		.description-text
+			width: 50%
+			padding: 20px 0 0 50px
+			p
+				font-family: $OpenSansLight
+				font-size: 24px
+				color: $black
+				margin-bottom: 50px
+				&.author
+					font-family: $FeltTipWoman
+					font-size: 36px
+
+// ================== SECTION "PORTFOLIO" STYLES ==================*/
+section.portfolio
+	background-image: url(../img/portfolio_bg.jpg)
+	background-repeat: no-repeat
+	background-size: cover
+	background-position: center
+	padding-bottom: 10px
+	.content
+		h2
+			text-align: center
+			margin-bottom: 25px
+		.pf-images
+			padding-bottom: 50px
+			img
+				cursor: pointer
+				margin: 10px
+				width: 100%
+				transition: transform .2s ease
+				position: relative
+				&:hover
+					transform: scale(1.1, 1.1)	
+					z-index: 1000		
+				
+
+
+// ================== FOOTER STYLES ==================*/
+footer
+	text-align: center
+	color: $black
+	span
+		margin: 50px 0 30px
+		display: block
+		font-size: 30px
+    	letter-spacing: 2px
+		text-transform: uppercase
+    	font-weight: 400
+		font-family: $NexaBold
+	a 
+		font-family: $NexaLight
+		color: inherit
+		text-decoration: none
+		text-transform: uppercase
+	.content
+		padding-bottom: 100px
+		.mail
+			a
+				font-size: 60px
+				letter-spacing: 5px
+		.phone
+			a 
+				font-size: 48px
+				letter-spacing: 3px
+		.social
+			i 
+				font-size: 30px
+				height: 55px
+				width: 55px
+				line-height: 55px
+				border: 1px solid $black
+				border-radius: 50%
+				margin: 0 10px
+				transition: transform .2s ease
+				&:hover
+					transform: scale(1.1, 1.1)
+	.copyright
+		border-top: 1px solid rgba($black, .3)
+		p
+			font-family: $NexaLight
+			text-transform: uppercase
+			color: rgba($black, .3)
+			padding: 35px
+			font-size: 18px
+@import "media" // Всегда в конце
